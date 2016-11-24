@@ -16,13 +16,21 @@ public class Main {
     Role role = new Role();
 
     DbInitial.initialUser();
+    DbInitial.initialClases();
     DbInitial.initialALLSubject();
     DbInitial.initialAudience();
-    DbInitial.initialClases();
-
     autentification.autentificationGuest();
 
     Guest guest = Db.currentUser;
+
+    // System.out.println("Size subjects : " + Db.subjects.size());
+    // for (int i = 0; i < Db.subjects.size(); i++) {
+    // System.out.print(Db.subjects.get(i).getName() + " - ");
+    // for (int j = 0; j < Db.subjects.get(i).getClasses().size(); j++) {
+    // System.out.print(Db.subjects.get(i).getClasses().get(j).getNumb() + ",");
+    // }
+    // System.out.println();
+    // }
 
     if (guest.getRole() == role.getStudent()) {
 
