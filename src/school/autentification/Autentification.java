@@ -6,7 +6,7 @@ import school.model.Guest;
 
 public class Autentification {
 
-  public void autentificationUser() {
+  public void autentificationGuest() {
     boolean start = true;
     while (start) {
       SystemSchool sysSchool = new SystemSchool();

@@ -6,6 +6,7 @@ import java.util.List;
 public class Subject {
   private String name;
   private List<Integer> raiting;
+  private List<Clas> classes;
 
   // constructor
 
@@ -15,7 +16,8 @@ public class Subject {
 
   public Subject(String name) {
     this.name = name;
-    this.raiting = new ArrayList<Integer>();
+    this.classes = new ArrayList<Clas>();
+    // this.raiting = new ArrayList<Integer>();
 
   }
 
@@ -34,6 +36,14 @@ public class Subject {
 
   public void setRaiting(int raiting) {
     this.raiting.add(raiting);
+  }
+
+  public List<Clas> getClasses() {
+    return classes;
+  }
+
+  public void setClasses(Clas clas) {
+    this.classes.add(clas);
   }
 
 }

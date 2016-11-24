@@ -83,95 +83,150 @@ public class DbInitial {
   }
 
   public static void initialALLSubject() {
+    DbInitial dbi = new DbInitial();
     Subject math = new Subject("math");
-    Db.subjects.add(math);
+    math.setClasses(dbi.toGetClass(1));
+    math.setClasses(dbi.toGetClass(2));
+
     Subject ukLang = new Subject("ukLang");
-    Db.subjects.add(ukLang);
+    ukLang.setClasses(dbi.toGetClass(5));
+
     Subject engLang = new Subject("engLang");
-    Db.subjects.add(engLang);
+    engLang.setClasses(dbi.toGetClass(1));
+    engLang.setClasses(dbi.toGetClass(2));
+    engLang.setClasses(dbi.toGetClass(5));
+
     Subject nature = new Subject("nature");
-    Db.subjects.add(nature);
+    nature.setClasses(dbi.toGetClass(1));
+    nature.setClasses(dbi.toGetClass(2));
+
     Subject paint = new Subject("paint");
-    Db.subjects.add(paint);
+    paint.setClasses(dbi.toGetClass(1));
+    paint.setClasses(dbi.toGetClass(2));
+
     Subject reading = new Subject("reading");
-    Db.subjects.add(reading);
+    reading.setClasses(dbi.toGetClass(1));
+    reading.setClasses(dbi.toGetClass(2));
+
     Subject music = new Subject("music");
-    Db.subjects.add(music);
+    music.setClasses(dbi.toGetClass(1));
+    music.setClasses(dbi.toGetClass(2));
+    music.setClasses(dbi.toGetClass(5));
+
     Subject energy = new Subject("energy");
-    Db.subjects.add(energy);
+    energy.setClasses(dbi.toGetClass(1));
+    energy.setClasses(dbi.toGetClass(2));
+    energy.setClasses(dbi.toGetClass(5));
+
     Subject basykHealth = new Subject("basykHealth");
-    Db.subjects.add(basykHealth);
+    basykHealth.setClasses(dbi.toGetClass(1));
+    basykHealth.setClasses(dbi.toGetClass(2));
+
     Subject algebra = new Subject("algebra");
-    Db.subjects.add(algebra);
+    algebra.setClasses(dbi.toGetClass(5));
+
     Subject geometry = new Subject("geometry");
-    Db.subjects.add(geometry);
+    geometry.setClasses(dbi.toGetClass(5));
+
     Subject geography = new Subject("geography");
-    Db.subjects.add(geography);
+    geography.setClasses(dbi.toGetClass(5));
+
     Subject physics = new Subject("physics");
-    Db.subjects.add(physics);
+    physics.setClasses(dbi.toGetClass(5));
+
     Subject chemistry = new Subject("chemistry");
-    Db.subjects.add(chemistry);
+    chemistry.setClasses(dbi.toGetClass(5));
+
     Subject working = new Subject("working");
-    Db.subjects.add(working);
+    working.setClasses(dbi.toGetClass(5));
+
     Subject ukrliterature = new Subject("literature");
+    ukrliterature.setClasses(dbi.toGetClass(5));
+
+    Db.subjects.add(math);
+    Db.subjects.add(ukLang);
+    Db.subjects.add(engLang);
+    Db.subjects.add(nature);
+    Db.subjects.add(paint);
+    Db.subjects.add(reading);
+    Db.subjects.add(music);
+    Db.subjects.add(energy);
+    Db.subjects.add(basykHealth);
+    Db.subjects.add(algebra);
+    Db.subjects.add(geometry);
+    Db.subjects.add(geography);
+    Db.subjects.add(physics);
+    Db.subjects.add(chemistry);
+    Db.subjects.add(working);
     Db.subjects.add(ukrliterature);
+
+  }
+
+  public Clas toGetClass(int numbClas) {
+    for (int i = 0; i < Db.clases.size(); i++) {
+      Clas tempClass = Db.clases.get(i);
+      if (tempClass.getNumb() == numbClas) {
+        return tempClass;
+      }
+    }
+    return null;
   }
 
   public static void initialAudience() {
     Audience a101 = new Audience(101);
-    Db.audiences.add(a101);
     Audience a102 = new Audience(102);
-    Db.audiences.add(a102);
     Audience a103 = new Audience(103);
-    Db.audiences.add(a103);
     Audience a104 = new Audience(104);
-    Db.audiences.add(a104);
     Audience a105 = new Audience(105);
-    Db.audiences.add(a105);
     Audience a106 = new Audience(106);
-    Db.audiences.add(a106);
     Audience a107 = new Audience(107);
-    Db.audiences.add(a107);
     Audience a108 = new Audience(108);
-    Db.audiences.add(a108);
     Audience a201 = new Audience(201);
-    Db.audiences.add(a201);
     Audience a202 = new Audience(202);
-    Db.audiences.add(a202);
     Audience a203 = new Audience(203);
-    Db.audiences.add(a203);
     Audience a204 = new Audience(204);
-    Db.audiences.add(a204);
     Audience a205 = new Audience(205);
-    Db.audiences.add(a205);
     Audience a206 = new Audience(206);
-    Db.audiences.add(a206);
     Audience a207 = new Audience(207);
-    Db.audiences.add(a207);
     Audience a208 = new Audience(208);
-    Db.audiences.add(a208);
     Audience a209 = new Audience(209);
-    Db.audiences.add(a209);
     Audience a210 = new Audience(210);
+    Db.audiences.add(a101);
+    Db.audiences.add(a102);
+    Db.audiences.add(a103);
+    Db.audiences.add(a104);
+    Db.audiences.add(a105);
+    Db.audiences.add(a106);
+    Db.audiences.add(a107);
+    Db.audiences.add(a108);
+    Db.audiences.add(a201);
+    Db.audiences.add(a202);
+    Db.audiences.add(a203);
+    Db.audiences.add(a204);
+    Db.audiences.add(a205);
+    Db.audiences.add(a206);
+    Db.audiences.add(a207);
+    Db.audiences.add(a208);
+    Db.audiences.add(a209);
     Db.audiences.add(a210);
   }
 
   public static void initialClases() {
     DbInitial dbi = new DbInitial();
-
     Clas clas1 = new Clas();
     clas1.setNumb(1);
     clas1.setStudents(dbi.addStudentsForClas(clas1.getNumb()));
-    Db.clases.add(clas1);
 
     Clas clas2 = new Clas();
     clas2.setNumb(2);
     clas2.setStudents(dbi.addStudentsForClas(clas2.getNumb()));
-    Db.clases.add(clas2);
 
     Clas clas5 = new Clas();
     clas5.setNumb(5);
     clas5.setStudents(dbi.addStudentsForClas(clas5.getNumb()));
+
+    Db.clases.add(clas1);
+    Db.clases.add(clas2);
     Db.clases.add(clas5);
   }
 

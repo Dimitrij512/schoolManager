@@ -20,7 +20,7 @@ public class Main {
     DbInitial.initialAudience();
     DbInitial.initialClases();
 
-    autentification.autentificationUser();
+    autentification.autentificationGuest();
 
     Guest guest = Db.currentUser;
 
