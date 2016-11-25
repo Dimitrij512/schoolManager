@@ -36,6 +36,7 @@ public class SystemSchool {
           subjectForSchedule.setClas(classNumber);
           subjectForSchedule.setDayOfWeek(dayOfWeek);
           subjectForSchedule.setNumbLesson(iterDay + 1);
+          Db.schedule.add(toMakeUniqueLesson(subjectForSchedule));
         }
 
       }
@@ -54,19 +55,53 @@ public class SystemSchool {
 
   public ScheduleSubject toMakeUniqueLesson(ScheduleSubject lesson) {
     Random random = new Random();
-    int iterAudience = random.nextInt(Db.audiences.size());
-    List<Subject> listSubject = toGetSubjectsForClass(lesson.getClas());
-    int iterSubject = random.nextInt(listSubject.size());
-    String nameSubject = listSubject.get(iterSubject).getName();
 
-    lesson.setAudience(iterAudience);
+    List<Subject> listSubject = toGetSubjectsForClass(lesson.getClas());
+
+    int iterAudience = random.nextInt(Db.audiences.size());
+
+    // test
+    int listSizeSubject = listSubject.size();
+    System.out.println(listSizeSubject);
+
+    int iterSubject = random.nextInt(listSizeSubject);
+
+    String nameSubject = listSubject.get(iterSubject).getName();
+    int audienceSubject = Db.audiences.get(iterAudience).getNumber();
+    lesson.setAudience(audienceSubject);
     lesson.setNameLesson(nameSubject);
+
+    int lessonDay = lesson.getDayOfWeek();
+    int countLesson = lesson.getNumbLesson();
+    int audience = lesson.getAudience();
+    String name = lesson.getNameLesson();
 
     if (Db.schedule.size() == 0) {
       return lesson;
     } else {
-      for (int i = 0; i < Db.schedule.size(); i++) {
+      boolean start = true;
 
+      while (start) {
+        for (int i = 0; i < Db.schedule.size(); i++) {
+          ScheduleSubject schSub = Db.schedule.get(i);
+          int schSubDay = schSub.getDayOfWeek();
+          int schSubCountbLesson = schSub.getNumbLesson();
+          int schSubAudience = schSub.getAudience();
+          String schSubName = schSub.getNameLesson();
+
+          if (lessonDay == schSubDay && countLesson == schSubCountbLesson && audience == schSubAudience) {
+            iterAudience = random.nextInt(Db.audiences.size());
+            audience = Db.audiences.get(iterAudience).getNumber();
+            break;
+          } else if (lessonDay == schSubDay && countLesson == schSubCountbLesson && schSubName.equals(name)) {
+            iterSubject = random.nextInt(listSubject.size());
+            nameSubject = listSubject.get(iterSubject).getName();
+          } else {
+            lesson.setAudience(audience);
+            lesson.setNameLesson(nameSubject);
+            start = false;
+          }
+        }
       }
     }
     return lesson;
@@ -81,7 +116,6 @@ public class SystemSchool {
         int numbOfClas = clasForSubject.getNumb();
         if (numbOfClas == clasNumb) {
           listSubjcet.add(subjectForClas);
-          break;
         }
       }
     }

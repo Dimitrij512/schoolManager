@@ -1,5 +1,6 @@
 package school.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WorkWeek {
@@ -9,7 +10,7 @@ public class WorkWeek {
   private int thursday = 4;
   private int friday = 5;
 
-  private List<Integer> listWorkWeek;
+  private List<Integer> listWorkWeek = new ArrayList<Integer>();
 
   public WorkWeek() {
     listWorkWeek.add(this.monday);
