@@ -38,7 +38,6 @@ public class SystemSchool {
           subjectForSchedule.setNumbLesson(iterDay + 1);
           Db.schedule.add(toMakeUniqueLesson(subjectForSchedule));
         }
-
       }
     }
   }
@@ -112,7 +111,7 @@ public class SystemSchool {
     for (int i = 0; i < Db.subjects.size(); i++) {
       Subject subjectForClas = Db.subjects.get(i);
       for (int j = 0; j < subjectForClas.getClasses().size(); j++) {
-        Clas clasForSubject = new Clas();
+        Clas clasForSubject = subjectForClas.getClasses().get(j);
         int numbOfClas = clasForSubject.getNumb();
         if (numbOfClas == clasNumb) {
           listSubjcet.add(subjectForClas);

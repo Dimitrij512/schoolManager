@@ -26,8 +26,8 @@ public class Main {
 
     for (int i = 0; i < Db.schedule.size(); i++) {
       ScheduleSubject sr = Db.schedule.get(i);
-      System.out.println(sr.getClas() + " " + sr.getDayOfWeek() + sr.getNumbLesson() + " " + sr.getAudience() + " "
-          + sr.getNameLesson());
+      System.out.println(sr.getClas() + " " + sr.getDayOfWeek() + " " + sr.getNumbLesson() + " " + sr.getAudience()
+          + " " + sr.getNameLesson());
 
     }
 
