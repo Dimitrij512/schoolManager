@@ -3,6 +3,7 @@ package school.dbInitial;
 import java.util.ArrayList;
 import java.util.List;
 
+import school.controller.SystemSchool;
 import school.db.Db;
 import school.model.Audience;
 import school.model.Clas;
@@ -15,8 +16,10 @@ import school.model.Subject;
 
 public class DbInitial {
 	Role role = new Role();
+	SystemSchool sysScholl = new SystemSchool();
 
 	public static void initialUser() {
+		SystemSchool sysScholl = new SystemSchool();
 		Student student = new Student();
 		student.setLogin("student");
 		student.setPassword("password");
@@ -24,7 +27,6 @@ public class DbInitial {
 		student.setSurname("Petrenko");
 		student.setClas(1);
 		student.setAdress("Franuk");
-		student.setLessons(Db.subjects);
 		student.setRole(new Role().getStudent());
 
 		Student student2 = new Student();
@@ -34,7 +36,6 @@ public class DbInitial {
 		student2.setSurname("Pupkin");
 		student2.setClas(1);
 		student2.setAdress("Franuk");
-		student2.setLessons(Db.subjects);
 		student2.setRole(new Role().getStudent());
 
 		Student student3 = new Student();
@@ -44,7 +45,6 @@ public class DbInitial {
 		student3.setSurname("Firman");
 		student3.setClas(5);
 		student3.setAdress("Franuk");
-		student3.setLessons(Db.subjects);
 		student3.setRole(new Role().getStudent());
 
 		Student student4 = new Student();
@@ -54,7 +54,6 @@ public class DbInitial {
 		student4.setSurname("Barabash");
 		student4.setClas(5);
 		student4.setAdress("Franuk");
-		student4.setLessons(Db.subjects);
 		student4.setRole(new Role().getStudent());
 
 		Student student5 = new Student();
@@ -64,8 +63,16 @@ public class DbInitial {
 		student5.setSurname("BuYaYa");
 		student5.setClas(2);
 		student5.setAdress("Franuk");
-		student5.setLessons(Db.subjects);
 		student5.setRole(new Role().getStudent());
+
+		Student student6 = new Student();
+		student6.setLogin("student6");
+		student6.setPassword("password");
+		student6.setName("Vasylyna");
+		student6.setSurname("BuYaYa_Ya");
+		student6.setClas(3);
+		student6.setAdress("Franuk");
+		student6.setRole(new Role().getStudent());
 
 		Educator educator = new Educator();
 		Subject subject = new Subject("math");
@@ -89,6 +96,7 @@ public class DbInitial {
 		Db.users.add(student3);
 		Db.users.add(student4);
 		Db.users.add(student5);
+		Db.users.add(student6);
 		Db.users.add(educator);
 		Db.users.add(director);
 
@@ -98,7 +106,6 @@ public class DbInitial {
 		DbInitial dbi = new DbInitial();
 		Subject math = new Subject("math");
 		math.setClasses(dbi.toGetClass(1));
-		math.setClasses(dbi.toGetClass(2));
 
 		Subject ukLang = new Subject("ukLang");
 		ukLang.setClasses(dbi.toGetClass(5));
@@ -111,14 +118,17 @@ public class DbInitial {
 		Subject nature = new Subject("nature");
 		nature.setClasses(dbi.toGetClass(1));
 		nature.setClasses(dbi.toGetClass(2));
+		nature.setClasses(dbi.toGetClass(3));
 
 		Subject paint = new Subject("paint");
 		paint.setClasses(dbi.toGetClass(1));
 		paint.setClasses(dbi.toGetClass(2));
+		paint.setClasses(dbi.toGetClass(3));
 
 		Subject reading = new Subject("reading");
 		reading.setClasses(dbi.toGetClass(1));
 		reading.setClasses(dbi.toGetClass(2));
+		reading.setClasses(dbi.toGetClass(3));
 
 		Subject music = new Subject("music");
 		music.setClasses(dbi.toGetClass(1));
@@ -233,12 +243,17 @@ public class DbInitial {
 		clas2.setNumb(2);
 		clas2.setStudents(dbi.addStudentsForClas(clas2.getNumb()));
 
+		Clas clas3 = new Clas();
+		clas3.setNumb(3);
+		clas3.setStudents(dbi.addStudentsForClas(clas3.getNumb()));
+
 		Clas clas5 = new Clas();
 		clas5.setNumb(5);
 		clas5.setStudents(dbi.addStudentsForClas(clas5.getNumb()));
 
 		Db.clases.add(clas1);
 		Db.clases.add(clas2);
+		Db.clases.add(clas3);
 		Db.clases.add(clas5);
 	}
 
@@ -254,6 +269,20 @@ public class DbInitial {
 			}
 		}
 		return listStudents;
+	}
+
+	public static void initialSubjectForStudent() {
+		SystemSchool sysSchool = new SystemSchool();
+		Role role = new Role();
+		for (int i = 0; i < Db.users.size(); i++) {
+			if (Db.users.get(i).getRole() == role.getStudent()) {
+				Student student = (Student) Db.users.get(i);
+				int clas = student.getClas();
+				student.setLessons(sysSchool.toGetSubjects(clas));
+				Db.users.set(i, student);
+			}
+		}
+
 	}
 
 }

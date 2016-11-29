@@ -24,9 +24,15 @@ public class Main {
 		DirectorService directorService = new DirectorService();
 
 		DbInitial.initialUser();
+
+		DbInitial.initialSubjectForStudent();
+
 		DbInitial.initialClases();
 		DbInitial.initialALLSubject();
+		DbInitial.initialSubjectForStudent();
+
 		DbInitial.initialAudience();
+
 		autentification.autentificationGuest();
 		sysSchool.createShedule();
 		Guest guest = Db.currentUser;

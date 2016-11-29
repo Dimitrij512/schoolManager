@@ -53,7 +53,7 @@ public class SystemSchool {
 	public ScheduleSubject toMakeUniqueLesson(ScheduleSubject lesson) {
 		Random random = new Random();
 
-		List<Subject> listSubject = toGetSubjectsForClass(lesson.getClas());
+		List<Subject> listSubject = toGetSubjects(lesson.getClas());
 
 		int iterAudience = random.nextInt(Db.audiences.size());
 
@@ -100,15 +100,15 @@ public class SystemSchool {
 		return lesson;
 	}
 
-	public List<Subject> toGetSubjectsForClass(int clasNumb) {
+	public List<Subject> toGetSubjects(int clasNumb) {
 		List<Subject> listSubjcet = new ArrayList<Subject>();
 		for (int i = 0; i < Db.subjects.size(); i++) {
-			Subject subjectForClas = Db.subjects.get(i);
-			for (int j = 0; j < subjectForClas.getClasses().size(); j++) {
-				Clas clasForSubject = subjectForClas.getClasses().get(j);
+			Subject subject = Db.subjects.get(i);
+			for (int j = 0; j < subject.getClasses().size(); j++) {
+				Clas clasForSubject = subject.getClasses().get(j);
 				int numbOfClas = clasForSubject.getNumb();
 				if (numbOfClas == clasNumb) {
-					listSubjcet.add(subjectForClas);
+					listSubjcet.add(subject);
 				}
 			}
 		}

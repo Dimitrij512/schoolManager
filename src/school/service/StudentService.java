@@ -43,8 +43,8 @@ public class StudentService {
 			List<Student> listStudents = clas.getStudents();
 
 			if (directorRole != 0 || studentClasNumb != 0 || nameSubject != null) {
-				System.out.println("test - " + nameSubject);
-				if (directorRole != 0 || studentClasNumb == clasNumber || isSubjecInStudent(listStudents, nameSubject)) {
+				// System.out.println("test - " + nameSubject);
+				if (directorRole != 0 || studentClasNumb == clasNumber || isSubjecInClass(listStudents, nameSubject)) {
 					if (equalClass != clasNumber) {
 						System.out.println("-------------------");
 						System.out.println("Class : " + clasNumber);
@@ -63,15 +63,13 @@ public class StudentService {
 		}
 	}
 
-	public boolean isSubjecInStudent(List<Student> listStudent, String nameSubject) {
+	public boolean isSubjecInClass(List<Student> listStudent, String nameSubject) {
 		boolean result = false;
-		if (nameSubject != null && listStudent.size() > 0) {
+		if (nameSubject != null) {
 			outer: for (int i = 0; i < listStudent.size(); i++) {
 				List<Subject> listSubject = listStudent.get(i).getLessons();
 				for (int j = 0; j < listSubject.size(); j++) {
 					String name = listSubject.get(j).getName();
-					System.out.println(listStudent.get(i).getName());
-					System.out.println(name);
 					if (nameSubject.equals(name)) {
 						result = true;
 						break outer;
@@ -79,7 +77,6 @@ public class StudentService {
 				}
 			}
 		}
-		System.out.println(result);
 		return result;
 	}
 
