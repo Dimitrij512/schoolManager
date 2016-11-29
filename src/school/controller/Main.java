@@ -24,13 +24,10 @@ public class Main {
 		DirectorService directorService = new DirectorService();
 
 		DbInitial.initialUser();
-
 		DbInitial.initialSubjectForStudent();
-
 		DbInitial.initialClases();
 		DbInitial.initialALLSubject();
 		DbInitial.initialSubjectForStudent();
-
 		DbInitial.initialAudience();
 
 		autentification.autentificationGuest();
@@ -60,6 +57,8 @@ public class Main {
 				guestService.showSchedule();
 			} else if (paramert == 2) {
 				educatorService.toShowStudentOfClasses();
+			} else if (paramert == 3) {
+				educatorService.toAddRaiting();
 			}
 
 		} else if (guest.getRole() == role.getDirector()) {
@@ -71,6 +70,8 @@ public class Main {
 				guestService.showSchedule();
 			} else if (paramert == 2) {
 				directorService.toShowStudentOfClasses();
+			} else if (paramert == 3) {
+				directorService.toAddRaiting();
 			}
 
 		}

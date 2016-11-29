@@ -282,7 +282,5 @@ public class DbInitial {
 				Db.users.set(i, student);
 			}
 		}
-
 	}
-
 }

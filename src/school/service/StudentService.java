@@ -43,7 +43,6 @@ public class StudentService {
 			List<Student> listStudents = clas.getStudents();
 
 			if (directorRole != 0 || studentClasNumb != 0 || nameSubject != null) {
-				// System.out.println("test - " + nameSubject);
 				if (directorRole != 0 || studentClasNumb == clasNumber || isSubjecInClass(listStudents, nameSubject)) {
 					if (equalClass != clasNumber) {
 						System.out.println("-------------------");
@@ -54,12 +53,10 @@ public class StudentService {
 						Student student = listStudents.get(j);
 						String name = student.getName();
 						String surname = student.getSurname();
-						System.out.println("Clas numb : " + i + " student numb : " + j + " name : " + name + " " + surname);
-
+						System.out.println("name : " + name + " " + surname);
 					}
 				}
 			}
-
 		}
 	}
 
@@ -79,5 +76,4 @@ public class StudentService {
 		}
 		return result;
 	}
-
 }

@@ -4,46 +4,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Subject {
-  private String name;
-  private List<Integer> raiting;
-  private List<Clas> classes;
+	private String name;
+	private List<Integer> raiting;
+	private List<Clas> classes;
 
-  // constructor
+	// constructor
 
-  public Subject() {
-    this.raiting = new ArrayList<Integer>();
-  }
+	public Subject() {
+		this.raiting = new ArrayList<Integer>();
+	}
 
-  public Subject(String name) {
-    this.name = name;
-    this.classes = new ArrayList<Clas>();
-    // this.raiting = new ArrayList<Integer>();
+	public Subject(String name) {
+		this.name = name;
+		this.classes = new ArrayList<Clas>();
+		this.raiting = new ArrayList<Integer>();
 
-  }
+	}
 
-  // getters and setters
-  public String getName() {
-    return name;
-  }
+	// getters and setters
+	public String getName() {
+		return name;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public List<Integer> getRaiting() {
-    return raiting;
-  }
+	public List<Integer> getRaiting() {
+		return raiting;
+	}
 
-  public void setRaiting(int raiting) {
-    this.raiting.add(raiting);
-  }
+	public void setRaiting(int raiting) {
+		this.raiting.add(raiting);
+	}
 
-  public List<Clas> getClasses() {
-    return classes;
-  }
+	public List<Clas> getClasses() {
+		return classes;
+	}
 
-  public void setClasses(Clas clas) {
-    this.classes.add(clas);
-  }
+	public void setClasses(Clas clas) {
+		this.classes.add(clas);
+	}
 
 }
