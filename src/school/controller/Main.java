@@ -8,14 +8,20 @@ import school.model.Educator;
 import school.model.Guest;
 import school.model.Role;
 import school.model.Student;
+import school.service.DirectorService;
+import school.service.EducatorService;
 import school.service.GuestService;
+import school.service.StudentService;
 
 public class Main {
 	public static void main(String[] args) {
 		Autentification autentification = new Autentification();
 		SystemSchool sysSchool = new SystemSchool();
 		Role role = new Role();
-		GuestService gueService = new GuestService();
+		GuestService guestService = new GuestService();
+		StudentService studentService = new StudentService();
+		EducatorService educatorService = new EducatorService();
+		DirectorService directorService = new DirectorService();
 
 		DbInitial.initialUser();
 		DbInitial.initialClases();
@@ -23,25 +29,44 @@ public class Main {
 		DbInitial.initialAudience();
 		autentification.autentificationGuest();
 		sysSchool.createShedule();
-
-		gueService.showSchedule();
-
 		Guest guest = Db.currentUser;
+		sysSchool.toShowWelcomePage();
+
+		int paramert = 0;
 
 		if (guest.getRole() == role.getStudent()) {
-
 			Student student = (Student) guest;
-			System.out.println(student.getName());
-			System.out.println(student.getClas());
+			studentService.toShowAvaliableMethods();
+			paramert = Integer.parseInt(sysSchool.enterNumber());
+
+			if (paramert == 1) {
+				guestService.showSchedule();
+			} else if (paramert == 2) {
+				studentService.toShowStudentOfClasses();
+			}
 
 		} else if (guest.getRole() == role.getEducator()) {
 			Educator educator = (Educator) guest;
-			System.out.println(educator.getName());
-			System.out.println(educator.getSubject().getName());
+			educatorService.toShowAvaliableMethods();
+			paramert = Integer.parseInt(sysSchool.enterNumber());
+
+			if (paramert == 1) {
+				guestService.showSchedule();
+			} else if (paramert == 2) {
+				educatorService.toShowStudentOfClasses();
+			}
 
 		} else if (guest.getRole() == role.getDirector()) {
 			Director director = (Director) guest;
-			System.out.println(director.getName());
+			directorService.toShowAvaliableMethods();
+			paramert = Integer.parseInt(sysSchool.enterNumber());
+
+			if (paramert == 1) {
+				guestService.showSchedule();
+			} else if (paramert == 2) {
+				directorService.toShowStudentOfClasses();
+			}
+
 		}
 	}
 

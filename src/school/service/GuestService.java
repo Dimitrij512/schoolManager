@@ -52,7 +52,6 @@ public class GuestService {
 					}
 					System.out.print(subjectCountLesson + " " + subjectAudience + " " + subjectLesson);
 					System.out.println();
-
 				}
 			}
 		}

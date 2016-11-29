@@ -20,8 +20,6 @@ public class SystemSchool {
 	}
 
 	public void createShedule() {
-		Random random = new Random();
-
 		WorkWeek workWeek = new WorkWeek();
 
 		for (int classIter = 0; classIter < Db.clases.size(); classIter++) {
@@ -115,6 +113,13 @@ public class SystemSchool {
 			}
 		}
 		return listSubjcet;
+	}
+
+	public void toShowWelcomePage() {
+		String name = Db.currentUser.getName();
+		String surName = Db.currentUser.getSurname();
+		System.out.println(name + " " + surName);
+		System.out.println("Welcom to School Manager !!!".toUpperCase());
 	}
 
 }
